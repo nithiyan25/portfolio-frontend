@@ -1,13 +1,10 @@
 // API Service for Portfolio Backend
-
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
-fetch(`${API_BASE_URL}/api/projects`);
-
 
 class PortfolioAPI {
   async fetchProfile() {
     try {
-      const response = await fetch(`${API_BASE_URL}/profile`);
+      const response = await fetch(`${API_BASE_URL}/api/profile`);
       if (!response.ok) throw new Error('Failed to fetch profile');
       return await response.json();
     } catch (error) {
@@ -18,7 +15,7 @@ class PortfolioAPI {
 
   async fetchSkills() {
     try {
-      const response = await fetch(`${API_BASE_URL}/skills`);
+      const response = await fetch(`${API_BASE_URL}/api/skills`);
       if (!response.ok) throw new Error('Failed to fetch skills');
       return await response.json();
     } catch (error) {
@@ -29,7 +26,7 @@ class PortfolioAPI {
 
   async fetchProjects(category = null, featured = null) {
     try {
-      let url = `${API_BASE_URL}/projects`;
+      let url = `${API_BASE_URL}/api/projects`;
       const params = new URLSearchParams();
       
       if (category) params.append('category', category);
@@ -48,7 +45,7 @@ class PortfolioAPI {
 
   async fetchProject(id) {
     try {
-      const response = await fetch(`${API_BASE_URL}/projects/${id}`);
+      const response = await fetch(`${API_BASE_URL}/api/projects/${id}`);
       if (!response.ok) throw new Error('Failed to fetch project');
       return await response.json();
     } catch (error) {
@@ -59,7 +56,7 @@ class PortfolioAPI {
 
   async fetchExperience() {
     try {
-      const response = await fetch(`${API_BASE_URL}/experience`);
+      const response = await fetch(`${API_BASE_URL}/api/experience`);
       if (!response.ok) throw new Error('Failed to fetch experience');
       return await response.json();
     } catch (error) {
@@ -70,7 +67,7 @@ class PortfolioAPI {
 
   async sendContactMessage(data) {
     try {
-      const response = await fetch(`${API_BASE_URL}/contact`, {
+      const response = await fetch(`${API_BASE_URL}/api/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
@@ -86,7 +83,7 @@ class PortfolioAPI {
 
   async fetchStats() {
     try {
-      const response = await fetch(`${API_BASE_URL}/stats`);
+      const response = await fetch(`${API_BASE_URL}/api/stats`);
       if (!response.ok) throw new Error('Failed to fetch stats');
       return await response.json();
     } catch (error) {
